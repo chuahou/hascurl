@@ -52,3 +52,21 @@ char *get(char *url)
 		return NULL;
 	}
 }
+
+char *post(char *url, char *fields)
+{
+	CURL *curl = curl_easy_init();
+	if (curl) {
+		struct write_out wout = { .data = NULL, .size = 0 };
+		curl_easy_setopt(curl, CURLOPT_URL, url);
+		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, fields);
+		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &wout);
+		CURLcode result = curl_easy_perform(curl);
+		curl_easy_cleanup(curl);
+		return (result == CURLE_OK) ? wout.data : NULL;
+	} else {
+		return NULL;
+	}
+}

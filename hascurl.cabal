@@ -23,12 +23,18 @@ source-repository head
   location: https://github.com/chuahou/hascurl
 
 library
+  exposed-modules:
+      Network.Curl.Hascurl
   other-modules:
       Paths_hascurl
   hs-source-dirs:
       src
   default-extensions: LambdaCase TupleSections
   ghc-options: -Wall -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -static
+  include-dirs:
+      csrc
+  c-sources:
+      csrc/hascurl.c
   extra-libraries:
       curl
   build-depends:

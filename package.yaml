@@ -25,6 +25,8 @@ dependencies:
 library:
     source-dirs:     src
     extra-libraries: curl
+    c-sources:       csrc/hascurl.c
+    include-dirs:    csrc
 
 extra-doc-files:
     - README.md

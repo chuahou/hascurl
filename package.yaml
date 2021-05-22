@@ -30,3 +30,4 @@ library:
 
 extra-doc-files:
     - README.md
+    - CHANGELOG.md

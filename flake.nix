@@ -28,8 +28,10 @@
     });
 
   in rec {
-    defaultPackage.${system} = pkgs.haskell.lib.dontHaddock
-      (pkgs.haskellPackages.callCabal2nix "hascurl" ./. {});
+    defaultPackage.${system} =
+      (pkgs.haskellPackages.callCabal2nix "hascurl" ./. {}).overrideAttrs (old: {
+        buildInputs = (old.buildInputs or []) ++ [ pkgs.curl.dev ];
+      });
 
     devShell.${system} =
       (pkgs.haskell.lib.overrideCabal defaultPackage.${system} (old: {

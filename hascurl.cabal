@@ -28,7 +28,7 @@ library
   hs-source-dirs:
       src
   default-extensions: LambdaCase TupleSections
-  ghc-options: -Wall -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -static -threaded
+  ghc-options: -Wall -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -static
   extra-libraries:
       curl
   build-depends:

@@ -1,0 +1,36 @@
+cabal-version: 1.18
+
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           hascurl
+version:        0.1.0.0
+synopsis:       Haskell bindings to very small subset of libcurl
+description:    Simple Haskell bindings to a small subset of libcurl. Most packages available now either seem actively maintained or provide a more feature-rich network request experience, so this package is meant for personal use for when I only need the very basics.
+category:       Network
+homepage:       https://github.com/chuahou/hascurl#readme
+bug-reports:    https://github.com/chuahou/hascurl/issues
+maintainer:     Chua Hou <human+github@chuahou.dev>
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-doc-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/chuahou/hascurl
+
+library
+  other-modules:
+      Paths_hascurl
+  hs-source-dirs:
+      src
+  default-extensions: LambdaCase TupleSections
+  ghc-options: -Wall -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -static -threaded
+  extra-libraries:
+      curl
+  build-depends:
+      base >=4.13 && <5
+  default-language: Haskell2010

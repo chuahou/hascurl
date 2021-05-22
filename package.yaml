@@ -1,0 +1,31 @@
+name:        hascurl
+version:     0.1.0.0
+synopsis:    Haskell bindings to very small subset of libcurl
+description: Simple Haskell bindings to a small subset of libcurl. Most packages
+             available now either seem actively maintained or provide a more
+             feature-rich network request experience, so this package is meant
+             for personal use for when I only need the very basics.
+category:    Network
+github:      chuahou/hascurl
+maintainer:  Chua Hou <human+github@chuahou.dev>
+
+ghc-options:
+    - -Wall
+    - -fwarn-incomplete-uni-patterns
+    - -fwarn-incomplete-record-updates
+    - -static
+    - -threaded
+
+default-extensions:
+    - LambdaCase
+    - TupleSections
+
+dependencies:
+    - base >= 4.13 && < 5
+
+library:
+    source-dirs:     src
+    extra-libraries: curl
+
+extra-doc-files:
+    - README.md

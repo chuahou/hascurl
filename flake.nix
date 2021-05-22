@@ -38,6 +38,7 @@
         buildTools = (old.buildTools or []) ++ (with pkgs.haskellPackages; [
           cabal-install
           haskell-language-server
+          pkgs.curl.dev
         ]);
       })).env;
   };

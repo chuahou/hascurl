@@ -38,8 +38,16 @@
         buildTools = (old.buildTools or []) ++ (with pkgs.haskellPackages; [
           cabal-install
           haskell-language-server
-          pkgs.curl.dev
         ]);
-      })).env;
+      })).env.overrideAttrs (old: {
+
+        # GHCi needs this to be able to find libcurl.
+        LD_LIBRARY_PATH =
+          (old.LD_LIBRARY_PATH or "") + pkgs.lib.makeLibraryPath [ pkgs.curl ];
+
+        # Build inputs needed for cabal build within nix shell.
+        buildInputs =
+          (old.buildInputs or []) ++ defaultPackage.${system}.buildInputs;
+      });
   };
 }
